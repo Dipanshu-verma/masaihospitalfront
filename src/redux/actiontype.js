@@ -1,0 +1,4 @@
+export const ADD_DOCTOR_ONBOARD = "ADD_DOCTOR_ONBOARD"
+export const EDIT_DOCTOR = "EDIT_DOCTOR"
+export const DELETE_DOCTOR = "DELETE_DOCTOR"
+export const GET_DOCTORS = "GET_DOCTORS"
