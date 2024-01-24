@@ -6,47 +6,46 @@ import { useNavigate } from "react-router-dom";
 
 const Wrapper = styled(Box)({
   overflow: "hidden",
-  maxWidth: "390px",
-  background: "#fff",
+  maxWidth: "400px",
+  background: "#f0f0f0",
   padding: "30px",
-  borderRadius: "15px",
-  boxShadow: "0px 20px 30px -10px rgb(38, 57, 77)",
+  borderRadius: "10px",
+  boxShadow: "0px 10px 20px -5px rgba(0, 0, 0, 0.2)",
   margin: "auto",
-  marginTop: "90px",
+  marginTop: "50px",
 });
 
 const TitleText = styled(Box)({
   display: "flex",
   width: "200%",
+  marginBottom: "20px",
 });
 
 const Title = styled(Box)({
   width: "50%",
-  fontSize: "35px",
+  fontSize: "28px",
   fontWeight: 600,
   textAlign: "center",
-  transition: "all 0.6s cubic-bezier(0.68,-0.55,0.265,1.55)",
   cursor: "pointer",
+  color: "#333",
 });
 
 const SlideControls = styled(Box)({
   position: "relative",
   display: "flex",
-  height: "50px",
+  height: "40px",
   width: "100%",
   overflow: "hidden",
-  margin: "30px 0 10px 0",
+  margin: "20px 0 10px 0",
   justifyContent: "space-between",
   border: "1px solid lightgrey",
-  borderRadius: "15px",
+  borderRadius: "5px",
 });
-
- 
 
 const Field = styled(Box)({
   height: "50px",
   width: "100%",
-  marginTop: "20px",
+  marginTop: "15px",
 });
 
 const InputField = styled(Input)({
@@ -55,8 +54,8 @@ const InputField = styled(Input)({
   outline: "none",
   paddingLeft: "15px",
   borderBottomWidth: "1px",
-  fontSize: "17px",
-  transition: "all 0.3s ease",
+  fontSize: "16px",
+  backgroundColor: "#f9f9f9",
 });
 
 const PassLink = styled(Box)({
@@ -66,7 +65,7 @@ const PassLink = styled(Box)({
 const Btn = styled(Box)({
   height: "50px",
   width: "100%",
-  borderRadius: "15px",
+  borderRadius: "10px",
   position: "relative",
   overflow: "hidden",
 });
@@ -76,8 +75,8 @@ const BtnLayer = styled(Box)({
   width: "300%",
   position: "absolute",
   left: "-100%",
-  background: "-webkit-linear-gradient(right,#003366,#004080,#0059b3, #0073e6)",
-  borderRadius: "15px",
+  background: "linear-gradient(to right, #0059b3, #0073e6)",
+  borderRadius: "10px",
   transition: "all 0.4s ease",
 });
 
@@ -90,8 +89,8 @@ const SubmitButton = styled(Button)({
   border: "none",
   color: "#fff",
   paddingLeft: 0,
-  borderRadius: "15px",
-  fontSize: "20px",
+  borderRadius: "10px",
+  fontSize: "18px",
   fontWeight: 500,
   cursor: "pointer",
   textTransform: "capitalize",
@@ -180,60 +179,61 @@ const Signup = () => {
 
   return (
     <Wrapper>
-      <TitleText>
-        <Title width="50%" onClick={toggleForm}>
-          Login Form
-        </Title>
-        <Title width="50%" onClick={toggleForm}>
-          Signup Form
-        </Title>
-      </TitleText>
-      <SlideControls>
-        <input type="radio" style={{ display: "none" }} />
-        <input type="radio" style={{ display: "none" }} />
-        <label
-          onClick={toggleForm}
-          style={{
-            height: "100%",
-            width: "100%",
-            textAlign: "center",
-            zIndex: 1,
-            marginTop: "13px",
-            color: showSignup ? "black" : "white",
-            cursor: "pointer",
-          }}
-        >
-          Login
-        </label>
-        <label
-          onClick={toggleForm}
-          style={{
-            height: "100%",
-            width: "100%",
-            textAlign: "center",
-            zIndex: 1,
-            marginTop: "13px",
-            color: !showSignup ? "black" : "white",
-            cursor: "pointer",
-          }}
-        >
-          Signup
-        </label>
-        <Box
-          sx={{
-            position: "absolute",
-            background:
-              "-webkit-linear-gradient(left, #003366,#004080,#0059b3, #0073e6)",
-            height: "100%",
-            width: "50%",
-            left: showSignup? "50%" : 0,
-            borderRadius: "15px",
-            transition: "left 0.3s ease",
-          }}
-        >
-        
-        </Box>
-      </SlideControls>
+    <TitleText>
+      <Title width="50%" onClick={toggleForm}>
+        Login Form
+      </Title>
+      <Title width="50%" onClick={toggleForm}>
+        Signup Form
+      </Title>
+    </TitleText>
+    <SlideControls>
+      <input type="radio" style={{ display: "none" }} />
+      <input type="radio" style={{ display: "none" }} />
+      <label
+        onClick={toggleForm}
+        style={{
+          height: "100%",
+          width: "100%",
+          textAlign: "center",
+          zIndex: 1,
+          marginTop: "5px",
+          color: showSignup ? "#333" : "#fff",
+          cursor: "pointer",
+          backgroundColor: showSignup ? "#fff" : "#0073e6",
+          borderRadius: "5px",
+        }}
+      >
+        Login
+      </label>
+      <label
+        onClick={toggleForm}
+        style={{
+          height: "100%",
+          width: "100%",
+          textAlign: "center",
+          zIndex: 1,
+          marginTop: "5px",
+          color: !showSignup ? "#333" : "#fff",
+          cursor: "pointer",
+          backgroundColor: !showSignup ? "#fff" : "#0073e6",
+          borderRadius: "5px",
+        }}
+      >
+        Signup
+      </label>
+      <Box
+        sx={{
+          position: "absolute",
+          background: "linear-gradient(to right, #0059b3, #0073e6)",
+          height: "100%",
+          width: "50%",
+          left: showSignup ? "50%" : 0,
+          borderRadius: "5px",
+          transition: "left 0.3s ease",
+        }}
+      ></Box>
+    </SlideControls>
       <Box>
         <form
           style={{ display: showSignup ? "none" : "block" }}

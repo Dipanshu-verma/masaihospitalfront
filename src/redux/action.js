@@ -13,10 +13,10 @@ export const OnboardDoctor = (dataform) => async(dispatch)=>{
         console.log(error);
       }
 }
-export const GetAppointments = () => async(dispatch)=>{
+export const GetAppointments = (queryval) => async(dispatch)=>{
     try {
 
-        const data =  await axios.get("https://hospital-server-masai.onrender.com/appointments")
+        const data =  await axios.get(`https://hospital-server-masai.onrender.com/appointments?search=${queryval.search}&sort=${queryval.sort}&specialization=${queryval.specialization}`)
         console.log(data);
         dispatch({
             type:GET_DOCTORS,
@@ -46,7 +46,7 @@ export const editAppointments = (dataAppoin,id) => async(dispatch)=>{
 }
 
 export const DeleteAppoint = (id) => async(dispatch)=>{
-    console.log(id);
+     
     try {
 
         const data =  await axios.delete(`https://hospital-server-masai.onrender.com/appointments/${id}`)
