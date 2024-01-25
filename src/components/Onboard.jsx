@@ -12,7 +12,7 @@ import {
   Paper,
   Grid,
 } from "@mui/material";
-import axios from "axios";
+ 
 import { useDispatch } from "react-redux";
 import { OnboardDoctor } from "../redux/action";
 import { Navigate, useNavigate } from "react-router-dom";
@@ -57,7 +57,8 @@ const onboardData = [
   { label: "Fee", name: "fee", type: "number" },
 ];
 const Onboard = () => {
-  const [formData, setFormData] = useState({
+
+  const [appoinmentForm, setappoinmentForm] = useState({
     name: "",
     image: "",
     specialization: "",
@@ -68,16 +69,21 @@ const Onboard = () => {
     fee: "",
   });
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const handleAppoinementChange = (e) => {
+    setappoinmentForm({ ...appoinmentForm, [e.target.name]: e.target.value });
   };
   const naviagte = useNavigate();
+
   const dispatch = useDispatch();
-  const handleSubmit = async (e) => {
-    console.log(formData);
+
+  const handleAppoinemntSubmit = async (e) => {
+   
     e.preventDefault();
-    await dispatch(OnboardDoctor(formData));
-   setFormData({
+
+    await dispatch(OnboardDoctor(appoinmentForm));
+
+   setappoinmentForm({
     name: "",
     image: "",
     specialization: "",
@@ -96,7 +102,7 @@ const Onboard = () => {
         <Typography component="h1" variant="h5">
           Onboard Doctor
         </Typography>
-        <form onSubmit={handleSubmit} style={{ marginTop: "20px" }}>
+        <form onSubmit={handleAppoinemntSubmit} style={{ marginTop: "20px" }}>
           <Grid container spacing={2}>
 
           {
@@ -108,22 +114,20 @@ const Onboard = () => {
                 label={elm.label}
                 name={elm.name}
                 fullWidth
-                value={formData[elm.name]}
-                onChange={handleChange}
+                value={appoinmentForm[elm.name]}
+                onChange={handleAppoinementChange}
                 required
               />
             </Grid>
             ))
           }
-             
-
             <Grid item xs={12} sm={6}>
               <FormControl fullWidth>
                 <InputLabel>Specialization</InputLabel>
                 <Select
                   name="specialization"
-                  value={formData.specialization}
-                  onChange={handleChange}
+                  value={appoinmentForm.specialization}
+                  onChange={handleAppoinementChange}
                   required
                 >
                   {specialties.map((specialty) => (
@@ -134,12 +138,6 @@ const Onboard = () => {
                 </Select>
               </FormControl>
             </Grid>
-
-            
-
-
-
-
           </Grid>
           <Button
             type="submit"

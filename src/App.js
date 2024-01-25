@@ -4,9 +4,11 @@ import Signup from "./components/Signup.jsx"
 import { Routes,Route, Link, Navigate } from 'react-router-dom';
 import Onboard from './components/Onboard.jsx';
 import Dashboard from './components/Dashboard.jsx';
+import { useState } from 'react';
 function App() {
   const token  =  localStorage.getItem("token");
-
+ 
+const [Token,setToken] =  useState(token?true:false);
   return (
     <div>
     <div>
@@ -16,9 +18,9 @@ function App() {
     </div>
  <Routes>
    
-   <Route path='/'  element={<Signup/>}  />
-   <Route path='/onboard'  element={ token ? <Navigate  to="/"/>:<Onboard/>}  />
-   <Route path='/dashboard'  element={<Dashboard/>}  />
+   <Route path='/'  element={<Signup setToken={setToken}/>}  />
+   <Route path='/onboard'  element={ !Token ? <Navigate  to="/"/>:<Onboard/>}  />
+   <Route path='/dashboard'  element={ !Token ? <Navigate  to="/"/>:<Dashboard/>}  />
 
  </Routes>
       

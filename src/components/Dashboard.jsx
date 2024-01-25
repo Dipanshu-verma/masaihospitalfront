@@ -24,7 +24,7 @@ import EditModel from "./EditModel.jsx";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
-  const [editModalOpen, setEditModalOpen] = useState(false);
+  const [openEdit, setopenEdit] = useState(false);
 
   const { doctors } = useSelector((store) => store);
   const [editedDoctor, setEditedDoctor] = useState(null);
@@ -34,16 +34,18 @@ const Dashboard = () => {
     search: "",
   });
 
-  const handleEditChange = (field, value) => {
+  const handleEdidDoctor = (field, value) => {
     setEditedDoctor((prev) => ({ ...prev, [field]: value }));
   };
+
+
   useEffect(() => {
     dispatch(GetAppointments(queryval));
   }, [dispatch, queryval]);
 
-  const handleEditClick = (doctor) => {
+  const handleToggleEdit = (doctor) => {
     setEditedDoctor(doctor);
-    setEditModalOpen(true);
+    setopenEdit(true);
   };
 
   const handleQueryChange = (type, value) => {
@@ -51,15 +53,15 @@ const Dashboard = () => {
   };
   console.log(queryval);
 
-  const handleEditModalClose = () => {
-    setEditModalOpen(false);
+  const handleopenEditModel = () => {
+    setopenEdit(false);
     setEditedDoctor({});
   };
 
   const handleEditSubmit = async () => {
     await dispatch(editAppointments(editedDoctor, editedDoctor._id));
 
-    setEditModalOpen(false);
+    setopenEdit(false);
   };
 
   const Deletesubmit = async (id) => {
@@ -67,6 +69,8 @@ const Dashboard = () => {
     dispatch(GetAppointments(queryval));
   };
 
+
+  
   return (
     <Container maxWidth="lg" style={{ marginTop: "50px" }}>
       <Typography variant="h4" gutterBottom>
@@ -81,6 +85,7 @@ const Dashboard = () => {
                 handleQueryChange("specialization", e.target.value)
               }
             >
+
               <MenuItem value="Cardiologist">Cardiologist</MenuItem>
               <MenuItem value="Dermatologist">Dermatologist</MenuItem>
               <MenuItem value="Pediatrician">Pediatrician</MenuItem>
@@ -148,16 +153,16 @@ const Dashboard = () => {
                 </Typography>
 
                 <Button
-                  variant="outlined"
+                  variant="contained"
                   color="primary"
                   style={{ marginRight: "10px" }}
-                  onClick={() => handleEditClick(doctor)}
+                  onClick={() => handleToggleEdit(doctor)}
                 >
                   Edit
                 </Button>
                 <Button
                   variant="outlined"
-                  color="secondary"
+                  color="primary"
                   onClick={() => Deletesubmit(doctor._id)}
                 >
                   Delete
@@ -169,10 +174,10 @@ const Dashboard = () => {
       </Grid>
 
       <EditModel
-        handleEditModalClose={() => handleEditModalClose()}
-        editModalOpen={editModalOpen}
+        handleopenEditModel={() => handleopenEditModel()}
+        openEdit={openEdit}
         editedDoctor={editedDoctor}
-        handleEditChange={(type, value) => handleEditChange(type, value)}
+        handleEdidDoctor={(type, value) => handleEdidDoctor(type, value)}
         handleEditSubmit={() => handleEditSubmit()}
       />
     </Container>
