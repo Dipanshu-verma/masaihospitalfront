@@ -266,11 +266,13 @@ const Signup = ({ setToken }) => {
             ""
           )}
 
-          <PassLink>
+          {
+  !singupToggle &&<PassLink>
             <Typography textAlign="left" marginTop="7px" color="#2279d9">
               Forgot password?
             </Typography>
           </PassLink>
+}
           <Btn marginTop="20px">
             <BtnLayer />
             <SubmitButton type="submit">
