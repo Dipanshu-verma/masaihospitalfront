@@ -103,6 +103,11 @@ const Signup = ({ setToken }) => {
 
   const toggleSignupCard = () => {
     setsingupToggle(!singupToggle);
+    setUserData({
+      email: "",
+      password: "",
+      confirmpassword: "",
+    });
   };
 
   const [userData, setUserData] = useState({
