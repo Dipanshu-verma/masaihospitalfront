@@ -243,6 +243,7 @@ const Signup = ({ setToken }) => {
               type="text"
               placeholder="Email Address"
               name="email"
+              value={userData.email}
               required
               onChange={handleUserData}
             />
@@ -253,6 +254,7 @@ const Signup = ({ setToken }) => {
               placeholder="Password"
               name="password"
               required
+              value={userData.password}
               onChange={handleUserData}
             />
           </FieldBox>
@@ -263,6 +265,7 @@ const Signup = ({ setToken }) => {
                 type="password"
                 placeholder="Confirm password"
                 required
+                value={userData.confirmpassword}
                 onChange={handleUserData}
                 name="confirmpassword"
               />
@@ -270,14 +273,14 @@ const Signup = ({ setToken }) => {
           ) : (
             ""
           )}
-
-          {
-  !singupToggle &&<PassLink>
+         {
+         !singupToggle &&<PassLink>
             <Typography textAlign="left" marginTop="7px" color="#2279d9">
               Forgot password?
             </Typography>
           </PassLink>
-}
+        }
+          
           <Btn marginTop="20px">
             <BtnLayer />
             <SubmitButton type="submit">
